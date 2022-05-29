@@ -70,3 +70,52 @@ def addSongs():
 for s in tempSong:
         s=s.replace("C:/Users/DataFlair/python-mp3-music-player/","")
 songsList.insert(END,s)
+
+def deleteSong():
+    currSong=songsList.curselection()
+    songsList.delete(currSong[0])
+
+def Play():
+    song=songsList.get(ACTIVE)
+    song=f'C:/FILL IN HERE '
+    mixer.music.load(song)
+    mixer.music.play()
+
+#PAUSE
+def Pause():
+    mixer.music.pause()
+
+#STOP
+def Stop():
+    mixer.music.stop()
+    songsList.selection_clear(ACTIVE)
+
+#RESUME
+def Resume():
+    mixer.music.unpause()
+
+#Functions to navigate from the current track
+def Previous():
+    previousOne=songsList.curselection()
+    previousOne=previousOne[0]-1
+    temp2=songsList.get(previousOne)
+        temp2=f'C:/Users/DataFlair/python-mp3-music-player/{temp2}'    mixer.music.load(temp2)
+    mixer.music.play()
+    songsList.selection_clear(0,END)
+    songsList.activate(previousOne)
+    songsList.selection_set(previousOne)
+
+def Next():
+    
+    nextOne=songsList.curselection()
+    nextOne=nextOne[0]+1
+    #to get the next song 
+    temp=songsList.get(nextOne)
+            temp=f'C:/Users/DataFlair/python-mp3-music-player/{temp}'
+    mixer.music.load(temp)
+    mixer.music.play()
+    songsList.selection_clear(0,END)
+    #activate newsong
+    songsList.activate(nextOne)
+     #set the next song
+    songsList.selection_set(nextOne)
