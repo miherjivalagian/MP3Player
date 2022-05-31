@@ -1,9 +1,7 @@
-from tkinter import font
-from pygame import mizer
+from pygame import mixer
 from tkinter import *
-from tkinter.font as font
+import tkinter.font as font
 from tkinter import filedialog
-
 # creating the root window
 root=Tk()
 root.title('Mihers Python MP3 Player App')
@@ -99,7 +97,8 @@ def Previous():
     previousOne=songsList.curselection()
     previousOne=previousOne[0]-1
     temp2=songsList.get(previousOne)
-        temp2=f'C:/Users/DataFlair/python-mp3-music-player/{temp2}'    mixer.music.load(temp2)
+    temp2=f'C:/Users/DataFlair/python-mp3-music-player/{temp2}'    
+    mixer.music.load(temp2)
     mixer.music.play()
     songsList.selection_clear(0,END)
     songsList.activate(previousOne)
@@ -111,7 +110,7 @@ def Next():
     nextOne=nextOne[0]+1
     #to get the next song 
     temp=songsList.get(nextOne)
-            temp=f'C:/Users/DataFlair/python-mp3-music-player/{temp}'
+    temp=f'C:/Users/DataFlair/python-mp3-music-player/{temp}'
     mixer.music.load(temp)
     mixer.music.play()
     songsList.selection_clear(0,END)
